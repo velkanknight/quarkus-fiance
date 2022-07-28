@@ -1,26 +1,43 @@
 # quarkus-finance project
 
-Esse projeto foi desenvolvido em qurkus para analise da equipe do Banco de Brasil
+Esse projeto foi desenvolvido em Quakus para analise da equipe do Banco de Brasil
 
 Esse projeto usa algumas stacks:
 
 -Jaeger para fazer tracing de nossas requisicoes
 
--prometheus para enviar as métricas de execucao da aplicacao
+-Prometheus para enviar as métricas de execucao da aplicacao
 
--grafana para exibicao de dashboards 
+-Grafana para exibicao de dashboards 
 
--swagger para documentacao (openapi)
+-Swagger para documentacao (openapi)
 
--postgres como banco relacional
+-Postgres como banco relacional
 
--flyway para migracao dos scripts de banco
+-Flyway para migracao dos scripts de banco
 
 
 ## Running the application in dev mode
 
 Para rodar a aplicacao vc precisa subir as imagens que estao definidas no docker-compose na raiz do projeto
 
+Antes de rodar o docker-compose build a imagem da aplicacao utilizando o Dockerfile.jvm na pasta docker do projeto
+
+Utilize o comando : 
+```shell script
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/quarkus-finance-jvm .
+```
+Depois de subir a aplicacao pode acessar:
+
+Swagger : http://localhost:8080/q/swagger-ui/#
+
+Jaegger : http://localhost:16686/search
+
+Grafana : http://localhost:3000/  user/pass=(admin/admin)
+
+Prometheus : http://localhost:9090/graph
+
+Lembre-se que para o tracing do jaeeger funcionar deve usar a url certa do properties, há uma outra para banco local, essa url funciona pro banco dockerizado
 
 Basta executar 
 ```shell script
